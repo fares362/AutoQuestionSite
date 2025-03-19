@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Basique</title>
+</head>
+<body>
+    <h1>Chatbot Basique</h1>
+    <input type="text" id="question" placeholder="Pose une question">
+    <button onclick="getResponse()">Envoyer</button>
+    <p id="response"></p>
+
+    <script>
+        function getResponse() {
+            const question = document.getElementById('question').value.trim().toLowerCase();
+            const responseDiv = document.getElementById('response');
+
+            if (question === "") {
+                responseDiv.innerHTML = "Veuillez poser une question.";
+                return;
+            }
+
+            responseDiv.innerHTML = "Chargement..."; // Affichage temporaire
+
+            // Petite pause pour simuler un temps de réponse
+            setTimeout(() => {
+                const responses = {
+                    "bonjour": "Salut ! Comment vas-tu ?",
+                    "ça va": "Moi ça va bien, merci !",
+                    "qui es-tu": "Je suis un chatbot !",
+                    "au revoir": "À bientôt !"
+                };
+
+                responseDiv.innerHTML = responses[question] || "Je ne comprends pas...";
+            }, 1000); // 1 seconde de pause pour l'effet réaliste
+        }
+    </script>
+</body>
+</html>
